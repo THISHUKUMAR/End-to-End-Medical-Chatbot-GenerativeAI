@@ -1,5 +1,4 @@
-- langchain-pinecone==0.0.3
-+ langchain-pinecone==0.2.8
+ langchain-pinecone==0.2.8
 
 flask
 gunicorn
