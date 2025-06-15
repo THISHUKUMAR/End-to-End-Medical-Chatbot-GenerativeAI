@@ -1,11 +1,24 @@
-sentence-transformers==2.2.2
-langchain
+
+# Core libraries
 flask
+gunicorn
+
+# LangChain + embeddings
+langchain
+langchain-community
+langchain-openai
+langchain-pinecone
+langchain-experimental
+sentence-transformers==2.2.2
+
+# Google Gemini support
+google-generativeai
+langchain-google-genai
+
+# Utilities
 pypdf
 python-dotenv
 pinecone-client[grpc]
-langchain-pinecone
-langchain-community
-langchain-openai
-langchain-experimental
+
+# Editable local module (keep only if you have a local `setup.py` or pyproject)
 -e .
