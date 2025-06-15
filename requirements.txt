@@ -1,22 +1,19 @@
- 
-
 flask
 gunicorn
 
 langchain==0.1.13
-
 langchain-community==0.0.29
-
 
 sentence-transformers==2.2.2
 huggingface-hub==0.14.1
 pypdf
 python-dotenv
 
-
 pinecone-client[grpc]
+
+# Use prebuilt wheels only
 transformers==4.29.2
-tokenizers==0.13.3
+tokenizers==0.13.3  # This version has wheels, won’t trigger build
 sentencepiece==0.1.99
 
 numpy==1.24.4
