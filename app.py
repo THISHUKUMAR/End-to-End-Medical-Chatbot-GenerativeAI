@@ -5,7 +5,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import create_retrieval_chain
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from dotenv import load_dotenv
+from langchain.memory import ConversationBufferMemory
 from src.prompt import *
 import os
 
@@ -32,18 +34,22 @@ docsearch = PineconeVectorStore.from_existing_index(
 
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
 
+memory = ConversationBufferMemory(memory_key="chat_history", return_messages=True)
 
 # llm = OpenAI(temperature=0.4, max_tokens=500)
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
     temperature=0.4,
     max_output_tokens=500,
+    memory=memory,
     google_api_key=GEMINI_API_KEY
 )
 prompt = ChatPromptTemplate.from_messages(
     [
         ("system", system_prompt),
-        ("human", "{input}"),
+        MessagesPlaceholder(variable_name="chat_history"),
+        ("human", "{input}")
+        ,
     ]
 )
 
@@ -61,7 +67,7 @@ def chat():
     msg = request.form["msg"]
     input = msg
     print(input)
-    response = rag_chain.invoke({"input": msg})
+    response = rag_chain.invoke({"input": msg,"chat_history": memory.buffer_as_messages})
     print("Response : ", response["answer"])
     return str(response["answer"])
 

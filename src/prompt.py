@@ -6,4 +6,5 @@ system_prompt=(
     "if you don't know the answer, just say 'I don't know'. use three sentences maximum to answer concise. "
     "\n\n"
     "{context}"
+    "{chat_history}"
 )
