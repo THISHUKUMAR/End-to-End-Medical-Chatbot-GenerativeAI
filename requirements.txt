@@ -12,6 +12,11 @@ sentence-transformers==2.2.2
 huggingface-hub==0.14.1
 pypdf
 python-dotenv
-tokenizers==0.13.3
+
 
 pinecone-client[grpc]
+transformers==4.29.2
+tokenizers==0.13.3
+sentencepiece==0.1.99
+
+numpy==1.24.4
