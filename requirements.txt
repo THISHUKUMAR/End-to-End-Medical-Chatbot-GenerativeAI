@@ -1,3 +1,7 @@
+setuptools>=42
+wheel
+build
+
 flask
 gunicorn
 
