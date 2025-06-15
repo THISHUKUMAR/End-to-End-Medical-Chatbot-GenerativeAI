@@ -1,16 +1,15 @@
 flask
 gunicorn
+
 langchain==0.1.13
-langchain-community
+langchain-community==0.0.29
 langchain-pinecone
-langchain-openai
-langchain-experimental
 langchain-google-genai
 google-generativeai
-python-dotenv
-pypdf
-pinecone-client[grpc]
+
 sentence-transformers==2.2.2
 huggingface-hub==0.14.1
--e .
 
+pypdf
+python-dotenv
+pinecone-client[grpc]
